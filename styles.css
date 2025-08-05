@@ -1,0 +1,264 @@
+/* Professional McKinsey/BCG-inspired styling */
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global styles */
+.stApp {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFC;
+}
+
+/* Header styling */
+.header {
+    background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.125rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* Metric cards */
+.metric-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.metric-card h3 {
+    color: #64748B;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0;
+}
+
+.metric-value {
+    color: #1E3A8A;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0.5rem 0;
+}
+
+.metric-card p {
+    color: #64748B;
+    font-size: 0.875rem;
+    margin: 0.5rem 0 0 0;
+}
+
+/* Section headers */
+.stMarkdown h2 {
+    color: #1E293B;
+    font-weight: 600;
+    border-bottom: 2px solid #1E3A8A;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.stMarkdown h3 {
+    color: #374151;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    background-color: #FFFFFF;
+    border-right: 1px solid #E2E8F0;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Progress bar styling */
+.stProgress > div > div > div {
+    background: linear-gradient(135deg, #1E3A8A 0%, #059669 100%);
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Text input styling */
+.stTextInput > div > div > input {
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: #1E3A8A;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+/* Select box styling */
+.stSelectbox > div > div > select {
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* File uploader styling */
+.stFileUploader > div {
+    border: 2px dashed #CBD5E1;
+    border-radius: 8px;
+    background-color: #F8FAFC;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader > div:hover {
+    border-color: #1E3A8A;
+    background-color: #F1F5F9;
+}
+
+/* Success message styling */
+.stSuccess {
+    background-color: #D1FAE5;
+    border: 1px solid #059669;
+    border-radius: 8px;
+    color: #064E3B;
+}
+
+/* Warning message styling */
+.stWarning {
+    background-color: #FEF3C7;
+    border: 1px solid #F59E0B;
+    border-radius: 8px;
+    color: #92400E;
+}
+
+/* Error message styling */
+.stError {
+    background-color: #FEE2E2;
+    border: 1px solid #EF4444;
+    border-radius: 8px;
+    color: #991B1B;
+}
+
+/* Info message styling */
+.stInfo {
+    background-color: #DBEAFE;
+    border: 1px solid #3B82F6;
+    border-radius: 8px;
+    color: #1E40AF;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #64748B;
+    font-size: 0.875rem;
+    border-top: 1px solid #E2E8F0;
+    margin-top: 3rem;
+}
+
+/* Chart container styling */
+.js-plotly-plot {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Custom spacing */
+.stMarkdown {
+    margin-bottom: 1rem;
+}
+
+/* Card-like containers */
+.element-container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Hide Streamlit branding */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+.stDeployButton {display:none;}
+
+/* Professional table styling */
+.dataframe {
+    border: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.dataframe th {
+    background-color: #F8FAFC;
+    color: #374151;
+    font-weight: 600;
+    border-bottom: 2px solid #E2E8F0;
+}
+
+.dataframe td {
+    border-bottom: 1px solid #F1F5F9;
+    padding: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .metric-value {
+        font-size: 1.875rem;
+    }
+    
+    .metric-card {
+        padding: 1rem;
+    }
+}
