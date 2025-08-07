@@ -4,6 +4,12 @@ import os
 import tempfile
 import uuid
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+from watsonxclient import WatsonXClient as wxc
+
+# Initialize WatsonXClient
+wxc_client = wxc()
 
 # Enhanced version without ML dependencies for immediate functionality
 try:
@@ -32,10 +38,10 @@ except ImportError:
     PLOTLY_AVAILABLE = False
 
 # === CONFIG ===
-GROQ_API_KEY = "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"
-TAVILY_API_KEY = "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"
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_MODEL = "moonshotai/kimi-k2-instruct"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+GROQ_API_URL = os.getenv("GROQ_API_URL")
+GROQ_MODEL = os.getenv("GROQ_MODEL")
 
 # Initialize session state for document storage
 if "document_chunks" not in st.session_state:
@@ -69,6 +75,23 @@ def call_groq_llm(prompt, history=None):
         return response.json()["choices"][0]["message"]["content"]
     except Exception as e:
         return f"Error calling AI service: {e}"
+    
+def call_watsonx_llm(wxc_client, prompt, history=None):
+    """
+    Calls WatsonXClient's generate_completion method and returns the result.
+    """
+    system_prompt = "You are a market analyst providing actionable insights for business strategy."
+    if history:
+        system_prompt += "\n" + "\n".join(
+            f"{msg['role'].capitalize()}: {msg['content']}" for msg in history
+        )
+    result = wxc_client.generate_completion(
+        prompt=prompt,
+        system_prompt=system_prompt,
+        max_tokens=500,
+        temperature=0.2
+    )
+    return result  # <-- Just return the string result
 
 # === TAVILY FETCH ===
 def fetch_trend_data_tavily(query: str, max_results: int = 3) -> dict:
@@ -287,8 +310,10 @@ with col2:
     analyze_button = st.button("🔬 Analyze Market Trend", type="primary", use_container_width=True)
 
 if analyze_button:
-    if not GROQ_API_KEY:
-        st.error("❌ GROQ API Key not configured. Please check your environment variables.")
+    if not wxc_client.API_KEY:
+        st.error("❌ WatsonX API Key not configured. Please check your environment variables.")
+    # elif not GROQ_API_KEY:
+    #     st.error("❌ GROQ API Key not configured. Please check your environment variables.")
     elif not query.strip():
         st.warning("⚠️ Please enter a valid trend or topic to analyze.")
     else:
@@ -343,7 +368,8 @@ if analyze_button:
                 f"Format your response with clear headings and bullet points for executive readability."
             )
             
-            llm_response = call_groq_llm(prompt)
+            # llm_response = call_groq_llm(prompt)  # Original call with groq
+            llm_response = call_watsonx_llm(wxc_client, prompt)
             
             progress_bar.progress(100)
             status_text.text("✅ Analysis complete!")
@@ -503,7 +529,8 @@ if "last_summary" in st.session_state:
         with st.spinner("🧠 Generating follow-up insights..."):
             try:
                 st.session_state["chat_history"].append({"role": "user", "content": followup})
-                followup_result = call_groq_llm(followup, history=st.session_state["chat_history"])
+                # followup_result = call_groq_llm(followup, history=st.session_state["chat_history"])
+                followup_result = call_watsonx_llm(wxc_client, followup, history=st.session_state["chat_history"])
                 st.session_state["chat_history"].append({"role": "assistant", "content": followup_result})
                 
                 st.markdown("### 🎯 Follow-up Insights")
@@ -518,7 +545,7 @@ if "last_summary" in st.session_state:
 st.markdown("---")
 st.markdown("""
 <div class="footer">
-    <p>Powered by Groq AI • Market Intelligence by Tavily • Built with Streamlit</p>
+    <p>Powered by watsonx AI • Market Intelligence by Tavily • Built with Streamlit</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -529,7 +556,8 @@ with st.sidebar:
     
     status_items = [
         ("📊 Streamlit", "✅ Active"),
-        ("🤖 Groq AI", "✅ Connected" if GROQ_API_KEY else "❌ Missing Key"),
+        # ("🤖 Groq AI", "✅ Connected" if GROQ_API_KEY else "❌ Missing Key"),
+        ("🤖 WatsonX AI", "✅ Connected" if wxc_client.API_KEY else "❌ Missing Key"),
         ("🌐 Tavily Search", "✅ Connected" if TAVILY_API_KEY else "❌ Missing Key"),
         ("📄 PDF Processing", "✅ Available" if PDF_AVAILABLE else "⚠️ Limited"),
         ("📈 Visualizations", "✅ Available" if PLOTLY_AVAILABLE else "⚠️ Limited"),
