@@ -1,6 +1,4 @@
 
 PyPDF2
 bs4
-newspaper
 plotly
-re 
