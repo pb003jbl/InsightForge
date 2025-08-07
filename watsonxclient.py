@@ -154,6 +154,6 @@ if __name__ == "__main__":
         max_tokens=500,
         temperature=0.2
     )
-    print("WatsonX Completion:", result)
+    # print("WatsonX Completion:", result)
 
 
