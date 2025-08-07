@@ -252,7 +252,7 @@ with st.sidebar:
     
     domain = st.selectbox(
         "Business Domain", 
-        ["Furniture", "Retail", "Healthcare", "Energy", "Consumer Electronics", "Fashion", "Automotive", "Fintech", "Other"],
+        ["Consumer Electronics", "Furniture", "Retail", "Healthcare", "Energy", "Fashion", "Automotive", "Fintech", "Other"],
         help="Select your primary business domain for contextual analysis"
     )
     
