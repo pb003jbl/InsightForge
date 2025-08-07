@@ -2,3 +2,4 @@ dotenv
 PyPDF2
 bs4
 plotly
+ibm_watsonx_ai
