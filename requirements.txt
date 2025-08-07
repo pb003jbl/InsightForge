@@ -1,10 +1,8 @@
 streamlit
-requests
 tempfile
 uuid
 datetime
 dotenv
-os
 PyPDF2
 bs4
 newspaper
