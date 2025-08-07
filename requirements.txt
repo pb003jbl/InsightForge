@@ -1,4 +1,4 @@
-
+dotenv
 PyPDF2
 bs4
 plotly
