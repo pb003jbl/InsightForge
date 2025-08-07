@@ -1,8 +1,4 @@
-streamlit
-tempfile
-uuid
-datetime
-dotenv
+
 PyPDF2
 bs4
 newspaper
