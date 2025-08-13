@@ -366,6 +366,7 @@ if analyze_button:
                 f"## RISK FACTORS\n"
                 f"- Key risks and mitigation strategies\n\n"
                 f"Format your response with clear headings and bullet points for executive readability."
+                f"## Product vision specifications"
             )
             
             # llm_response = call_groq_llm(prompt)  # Original call with groq
