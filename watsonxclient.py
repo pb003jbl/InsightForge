@@ -146,8 +146,8 @@ class WatsonXClient:
 
 if __name__ == "__main__":
     client = WatsonXClient()
-    prompt = "Summarize the latest trends in artificial intelligence."
-    system_prompt = "You are an expert AI assistant. Create an image based on the provided image description."
+    prompt = "Summarize the latest trends in artificial intelligence. Convert the product vision specifications to well described text & then Create an image based on the well described image text."
+    system_prompt = "You are an expert AI assistant. "
     result = client.generate_completion(
         prompt=prompt,
         system_prompt=system_prompt,
